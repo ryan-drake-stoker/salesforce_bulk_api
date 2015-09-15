@@ -45,6 +45,8 @@ require 'timeout'
       begin
         count :post
         throttle(http_method: :post, path: path)
+        puts("host: #{host}")
+        puts("headers: #{headers}")
         https(host).post(path, xml, headers).body
       rescue
         i += 1
