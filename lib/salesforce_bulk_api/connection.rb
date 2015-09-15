@@ -25,12 +25,15 @@ require 'timeout'
       client_type = @client.class.to_s
       case client_type
       when "Restforce::Data::Client"
+        puts("logging in with Restforce::Data::Client")
         @session_id=@client.options[:oauth_token]
         @server_url=@client.options[:instance_url]
       else
+        puts("logging in with other Client")
         @session_id=@client.oauth_token
         @server_url=@client.instance_url
       end
+      puts("Session id: #{@session_id}, server url: #{@server_url}")
       @instance = parse_instance()
       @@INSTANCE_HOST = "#{@instance}.salesforce.com"
     end
