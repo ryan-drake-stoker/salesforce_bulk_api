@@ -26,7 +26,7 @@ require 'timeout'
       case client_type
       when "Restforce::Data::Client"
         puts("logging in with Restforce::Data::Client")
-        @session_id=@client.options[:oauth_token]
+        @session_id= @client.options[:oauth_token] || @client.options[:refresh_token]
         @server_url=@client.options[:instance_url]
       else
         puts("logging in with other Client")
